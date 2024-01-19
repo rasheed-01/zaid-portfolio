@@ -1,8 +1,3 @@
-/*
-	Landed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
 
 (function($) {
 
@@ -244,7 +239,29 @@
 	// Banner.
 		var $banner = $('#banner');
 
-		$banner
-			._parallax();
+		$banner._parallax();
+
+	function initImageSlideshow() {
+		const images = ['images/painting01.jpg', 'images/painting02.jpg', 'images/painting03.jpg'];
+		let currentImageIndex = 0;
+
+		function showNextImage() {
+			const imageContainer = $('#imageContainer');
+
+			if (currentImageIndex >= images.length) {
+				currentImageIndex = 0; // Start over when all images are shown
+			}
+
+			imageContainer.html(`<img src="${images[currentImageIndex]}" alt="" />`);
+
+			currentImageIndex++;
+			setTimeout(showNextImage, 5000); // Change image every 5 seconds (adjust as needed)
+		}
+
+		showNextImage();
+	}
+
+	// Call the function to initialize the slideshow
+	initImageSlideshow();
 
 })(jQuery);
